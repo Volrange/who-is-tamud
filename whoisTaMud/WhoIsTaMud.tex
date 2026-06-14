@@ -1,0 +1,180 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+
+\usepackage[
+  a4paper,
+  top=2.4cm,
+  bottom=2.4cm,
+  left=2.6cm,
+  right=2.6cm
+]{geometry}
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{tikz}
+\usepackage{microtype}
+
+\pagestyle{plain}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.75em}
+\linespread{1.18}
+
+\definecolor{awardred}{HTML}{CF1C22}
+\definecolor{ink}{HTML}{2B2829}
+
+\IfFontExistsTF{Songti SC}
+  {\setCJKmainfont{Songti SC}}
+  {\setCJKmainfont{STSong}}
+\IfFontExistsTF{PingFang SC}
+  {\setCJKsansfont{PingFang SC}}
+  {\setCJKsansfont{Heiti SC}}
+
+\newfontfamily\TitleFont[
+  Path=fonts/,
+  UprightFont=RobotoSlab-Black.ttf
+]{RobotoSlab}
+\newfontfamily\SansFont[
+  Path=fonts/,
+  UprightFont=Montserrat-Bold.ttf
+]{Montserrat}
+
+\newcommand{\tracking}[2]{\addfontfeatures{LetterSpace=#1}#2}
+\newcommand{\scene}[2]{%
+  \clearpage
+  {\Large\bfseries #1\quad #2}\par
+  \vspace{0.6em}
+}
+\newcommand{\dialogue}[2]{%
+  \textbf{#1：}#2\par
+}
+\newcommand{\stage}[1]{%
+  {\sffamily\color{gray}#1}\par
+}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[white] (current page.south west) rectangle (current page.north east);
+
+  \node[
+    anchor=north,
+    text=ink,
+    align=center
+  ] at ([yshift=-2.1cm]current page.north) {%
+    {\SansFont\fontsize{11pt}{22pt}\selectfont
+    \tracking{90}{FOR \hspace{1.2em}YOUR \hspace{1.2em}CONSIDERATION}}%
+  };
+  
+
+  \node[
+    anchor=center,
+    align=center,
+    text=awardred
+  ] at ([yshift=0.7cm]current page.center) {%
+    {\TitleFont\fontsize{62pt}{60pt}\selectfont WHO}\\[8pt]
+    {\TitleFont\fontsize{62pt}{60pt}\selectfont IS}\\[8pt]
+    {\TitleFont\fontsize{62pt}{60pt}\selectfont TAMUD}%
+  };
+
+  \node[
+    anchor=north,
+    align=center
+  ] at ([yshift=-21.7cm]current page.north) {%
+    {\SansFont\fontsize{20pt}{26pt}\selectfont\textcolor{awardred}{ORIGINAL SCREENPLAY}}\\[8pt]
+    {\SansFont\fontsize{17pt}{22pt}\selectfont\textcolor{ink}{Xanchen Zhang}}%
+  };
+\end{tikzpicture}
+\end{titlepage}
+
+\section*{课程大作业}
+
+一个关于当代大学生对 AI 使用限制的思考的剧本创作。
+
+\textbf{主角：}Ta（助教），student\_1--student\_3。
+
+\textbf{片名备选：}绝命 Token Coder / Who Is TaMud / Ta Make U Do It。
+
+\textbf{摘要课程元素：}围绕课程大作业、AI agent 使用限制、学生公平性、学习能力退化与课程规则执行展开。
+
+\scene{Scene-0}{庆功宴，会议室，内}
+
+\dialogue{student\_1（组长）}{我 review 了一下我们的代码，感觉没什么问题，已经提交上去了。虽然规定不让用 AI agent，但是大家这次作业完成得还是不错，大家真是辛苦了。}
+
+\dialogue{s2}{不让用 Claude Code 太抽象了。美国有些地区的大学已经大面积开放 AI 使用了，你老中还在停步不前。}
+
+\dialogue{s3}{我没用过，所以真有传得那么邪乎吗？听说用 Claude Code 这种 agent 写代码，之后就会一次成瘾？之后再也戒不掉了？}
+
+\dialogue{s2}{其实用国产的 Kimi、Mimo 还行，成瘾性不强，偶尔写作业用一用，助教也看不出来。}
+
+\dialogue{s2}{但是外国货才是真爽。Claude Code 的 API，我天天用，感觉助教也看不出来。就是国内有的 API 店家喜欢掺一点其他模型的 API，纯度不够。想用纯度高的 token 还得是去美国买 Claude Max。最近社区里不是很火的那个 BlueCoder 也很棒，美国的一个计算机系老师，叫什么 Water White，带着他的一个学生 Jessy Pinkman 做出来了一个很棒的 agent，叫 BlueCoder。HumanEval 上 pass@1 直接干到 80\%，不是 pass@10，是 pass@1，简直依法入魂，不要太正。}
+
+\dialogue{student\_1}{你收着点吧。再用多一点，你写一个归并排序估计都费劲了。最近助教严抓，我要再看一下你那部分的代码。}
+
+\stage{student\_1 笑骂。}
+
+\dialogue{s2}{怕啥，绝对查不出来。查出来也无所谓啊，Ta 不是你实验室的学长吗？动用一下你的 social 能力啊组长！}
+
+\stage{伏笔。}
+
+\dialogue{student\_1}{诶，这个 TaMud 是谁？}
+
+\stage{s2 和 s3 凑过去看。给面部特写。}
+
+\dialogue{s2 / s3}{TaMud？}
+
+\stage{切到电脑分镜：助教 Ta 弹出消息。}
+
+\dialogue{Ta（消息）}{带着你的组员，带着电脑，一个一个来我的实验室。}
+
+\stage{众人面色铁青。}
+
+\scene{Scene-1}{拷问 s2}
+
+\dialogue{Ta}{s2 带着电脑先进来吧。}
+
+\stage{众人摇头，暗示什么也别说。s2 惊恐。}
+
+\dialogue{Ta}{来说说吧，这次大作业你负责的那一部分？}
+
+\dialogue{s2}{负责后端的数据处理，还有路径搜索那一块。}
+
+\stage{Ta 看屏幕，一边笑，一边点头。}
+
+\dialogue{Ta}{你的代码看上去质量很高啊？是自己写的吗？注释写这么全？}
+
+\dialogue{s2}{都……都是自己写的，助教。}
+
+\dialogue{Ta}{你路径搜索用的什么算法？用的什么数据结构？}
+
+\dialogue{s2}{图……}
+
+\dialogue{Ta}{图用什么存的？}
+
+\stage{s2 慌张沉默，随后逐渐愤怒。}
+
+\dialogue{Ta}{根据课程大纲第 26 条，个人代码 AI 覆盖率超过 10\% 就会直接挂科。你这直接有 99\% 了吧，挂你 100 次都不够。}
+
+\dialogue{s2}{我是用了，但是别的课程早就可以用了啊！为什么就这门课用不了？接纳 AI 就是大势所驱！就这门课搞什么特色课程，要什么公平公正，大家都用不都是公平的吗！}
+
+\dialogue{Ta}{大家都用，就叫公平？}
+
+\dialogue{s2}{不然呢？现在外面都什么环境了？美国那边有的课都开始教学生怎么用 agent 写项目了。人家讲效率，讲工程化，讲 AI-native。我们这边还在问“你是不是自己写的”。这不就是拿旧时代的尺子，量新时代的学生吗？}
+
+\dialogue{Ta}{所以你觉得，会用 Claude Code，就是新时代学生？}
+
+\dialogue{s2}{至少比手搓强。}
+
+\stage{Ta 沉默。给电脑日期特写：6 月 4 日。}
+
+\scene{Scene-2}{拷问组长 student\_1}
+
+\textbf{主要台词：}
+
+\dialogue{Ta}{两年前那个挂着吊针 debug 的学习委员哪里去了？一年前那个为了一个 lab 熬通宵的国奖选手哪里去了？三个月前那个和我一起给同学们兢兢业业写测试的好学弟，到底去哪里了？}
+
+\dialogue{student\_1}{学长，我太想进步了。}
+
+\dialogue{Ta}{看看吧，看看你的手臂都成什么样子了。给我拉下来看看。这些……这些肌肉是一个计算机系的高材生该有的样子吗？从祖师爷图灵开始，哪一个计算机系的大佬是你这个样子！哪里来这么多时间健身？你比我更清楚！}
+
+\end{document}
